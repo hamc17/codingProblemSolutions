@@ -4,6 +4,7 @@ import pytest
 
 from manipulateArray import manipulate_array
 
+
 def get_input(input_file):
     cases = []
     with open(os.path.join(os.path.dirname(__file__), input_file), "rt") as f:
@@ -12,6 +13,7 @@ def get_input(input_file):
         op_array = lines[1:]
         cases.append((item_count, op_count, op_array))
     return cases
+
 
 def get_output(output_file):
     output = []
@@ -29,4 +31,5 @@ def test_large_case_manipulate_array():
         case = case_input[_]
         item_count, op_count, op_array = case
         output = case_output[_]
-    assert manipulate_array.manipulate_array(item_count, op_count, op_array) == output
+    assert manipulate_array.manipulate_array(
+        item_count, op_count, op_array) == output

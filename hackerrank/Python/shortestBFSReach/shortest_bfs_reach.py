@@ -7,6 +7,7 @@ from collections import defaultdict, deque
    Modified to run with input files
 """
 
+
 class Graph:
     """Bidirectional graph"""
 
@@ -31,11 +32,11 @@ class Graph:
     def find_all_distances(self, start, edge_length=1):
         """Breadth first search to get a list of distances
         to all nodes connected to the starting node.
-        
+
         Arguments:
             start {integer} -- The starting node value.
             edge_length {integer} -- The length per edge.
-        
+
         Returns:
             list -- A list containing the shortest distance
             to all nodes connected to start. -1 if no path.

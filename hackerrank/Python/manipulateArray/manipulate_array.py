@@ -1,9 +1,10 @@
 """
    Problem:
-   "Starting with a 1-indexed array of zeros and a list of operations, 
+   "Starting with a 1-indexed array of zeros and a list of operations,
     for each operation add the given value to each of the array elements
     between the two given indices, inclusive.
-    Once all operations have been performed, return the maximum value in your array."
+    Once all operations have been performed, return the maximum value in your
+    array."
 """
 
 

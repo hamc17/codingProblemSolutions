@@ -1,4 +1,3 @@
-import json
 import os
 
 import pytest
@@ -14,6 +13,7 @@ def get_input(input_file):
         arr = map(int, lines[1].strip().split(" "))
         cases.append((n, k, arr))
     return cases
+
 
 def get_output(output_file):
     output = []

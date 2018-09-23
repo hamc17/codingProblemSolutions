@@ -23,6 +23,7 @@ def get_input(input_file):
             cases.append([nodes, edge_count, start_val, edges])
     return cases
 
+
 def get_output(output_file):
     output = []
     with open(os.path.join(os.path.dirname(__file__), output_file), "rt") as f:
@@ -31,6 +32,7 @@ def get_output(output_file):
         for line in lines:
             output.append(map(int, line.strip().split(" ")))
     return output
+
 
 def test_small_case():
     case_input = get_input("short_case_input.txt")
@@ -54,6 +56,7 @@ def test_larger_case():
         for e in xrange(edge_count):
             g.connect(*edges[e])
         assert g.find_all_distances(start_val, 6) == case_output[_]
+
 
 def test_largest_case():
     case_input = get_input("largest_case_input.txt")

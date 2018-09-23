@@ -7,25 +7,32 @@ from collections import defaultdict
     They want them to be from different countries.
     You will be given a list of pairs of astronaut id's.
     Each pair is made of astronauts from the same country.
-    Determine how many pairs of astronauts from different countries they can choose from."
+    Determine how many pairs of astronauts from different countries
+    they can choose from."
 """
 
-#Step explanation:
-#- Take in values
-#- Begin getting total number of pairs possible
-#- Create bidirectional dict for astronaut pairs
-#- Create dict to verify if astronaut has been checked
-#- For each key that hasn't been checked, get their complete country
-#  - Get its values, remove it from the value list, add its values to the value list
-#    (This allows for retrieval of all values for a "country" without recursing; retrieve iteratively)
-#- Once all countries gathered, get the total count of possible combos
-#  - Remove all single astronaut countries from the list of countries and increment solo counter
-#  - Get total for countries with more than one member by adding: 
-#    [length(i) * length(j) {i, 0, length of country list}, {j, i + 1, length of country list}]
+# Step explanation:
+# - Take in values
+# - Begin getting total number of pairs possible
+# - Create bidirectional dict for astronaut pairs
+# - Create dict to verify if astronaut has been checked
+# - For each key that hasn't been checked, get their complete country
+#  - Get its values, remove it from the value list, add its values
+# to the value list
+#    (This allows for retrieval of all values for a "country"
+# without recursing; retrieve iteratively)
+# - Once all countries gathered, get the total count of possible combos
+#  - Remove all single astronaut countries from the list of countries
+# and increment solo counter
+#  - Get total for countries with more than one member by adding:
+#    [length(i) * length(j) {i, 0, length of country list},
+#       {j, i + 1, length of country list}]
 #  - Get total for countries with one member by adding:
 #    [1 * (solo - i) {i, 0, solo}]
 #  - return the total
-#- print & done
+# - print & done
+
+
 def get_pairs(n, astronauts):
     """Gets the total number of possible pairs where each pair contains
     an astronaut for a different country for a list of
@@ -36,7 +43,8 @@ def get_pairs(n, astronauts):
         astronauts {list} -- A list of astronaut pairs.
 
     Returns:
-        integer -- The total number of possible different country astronaut pairs.
+        integer -- The total number of possible different country
+        astronaut pairs.
     """
 
     countries = []
@@ -45,7 +53,7 @@ def get_pairs(n, astronauts):
     total = 0
     pair_dict = {k: [] for k in range(n)}
     checked = {k: False for k in range(n)}
-    
+
     for pair in astronauts:
         pair_dict[pair[0]].append(pair[1])
         pair_dict[pair[1]].append(pair[0])
@@ -65,6 +73,7 @@ def get_pairs(n, astronauts):
 
     return total
 
+
 def new_country(astronaut, pair_dict, checked):
     """Gets the complete country for an astronaut key;
     list of all astronauts that share the same country.
@@ -72,7 +81,8 @@ def new_country(astronaut, pair_dict, checked):
     Arguments:
         astronaut {integer} -- The astronaut ID.
         pair_dict {dict} -- A dict containing astronaut ID pairs.
-        checked {dict} -- A dict indicating if an astronaut ID has been checked already.
+        checked {dict} -- A dict indicating if an astronaut ID has
+        been checked already.
 
     Returns:
         list -- A list containing all IDs in the same country.

@@ -1,15 +1,17 @@
 """
-Given an array of integers and a target value. Determine the number of pairs of array elements that have a difference equal to a target value.
+Given an array of integers and a target value. Determine the number of pairs
+of array elements that have a difference equal to a target value.
 """
+
 
 def pairs_difference_of_k(k, arr):
     """Given an array of integers, gets the total number of pairs
         with a distance of k.
-    
+
     Arguments:
         k {integer} -- The target difference value.
         arr {list} -- An array of integers.
-    
+
     Returns:
         integer -- The total number of pairs whose difference
         is equal to k.

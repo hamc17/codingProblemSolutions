@@ -1,4 +1,3 @@
-import json
 import os
 
 import pytest
@@ -15,6 +14,7 @@ def get_input(input_file):
         case = [n, m, grid]
     return case
 
+
 def get_output(output_file):
     with open(os.path.join(os.path.dirname(__file__), output_file), "rt") as f:
         lines = f.readlines()
@@ -28,6 +28,7 @@ def test_small_grid_connected_cells_in_grid():
     n, m, grid = case_input
     output = case_output
     assert connected_cells_in_grid.maxRegion(grid) == output
+
 
 def test_larger_grid_connected_cells_in_grid():
     case_input = get_input("larger_grid_case_input.txt")

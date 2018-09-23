@@ -13,6 +13,7 @@ def get_input(input_file):
         case = [n, coin_count, coins]
     return case
 
+
 def get_output(output_file):
     with open(os.path.join(os.path.dirname(__file__), output_file), "rt") as f:
         lines = f.readlines()
