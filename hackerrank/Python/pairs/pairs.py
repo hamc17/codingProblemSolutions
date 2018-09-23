@@ -2,7 +2,7 @@
 Given an array of integers and a target value. Determine the number of pairs of array elements that have a difference equal to a target value.
 """
 
-def pairDiffK(k, arr):
+def pairs_difference_of_k(k, arr):
     """Given an array of integers, gets the total number of pairs
         with a distance of k.
     
