@@ -1,27 +1,32 @@
-import json
 import os
 
 import pytest
 
 from manipulateArray import manipulate_array
 
-test_cases = None
-with open(os.path.join(os.path.dirname(__file__), "test_input.json"), "rt") as f:
-    test_cases = json.load(f)
-
-for testcase in test_cases:
-    input_file_loc = os.path.join(os.path.dirname(__file__), testcase["input"])
-    output_file_loc = os.path.join(os.path.dirname(__file__), testcase["output"])
-    item_count = op_count = op_array = expected = None
-
-    with open(input_file_loc) as input_contents:
-        lines = input_contents.readlines()
+def get_input(input_file):
+    cases = []
+    with open(os.path.join(os.path.dirname(__file__), input_file), "rt") as f:
+        lines = f.readlines()
         item_count, op_count = map(int, lines[0].strip().split(" "))
         op_array = lines[1:]
+        cases.append((item_count, op_count, op_array))
+    return cases
 
-    with open(output_file_loc) as output_contents:
-        lines = output_contents.readlines()
+def get_output(output_file):
+    output = []
+    with open(os.path.join(os.path.dirname(__file__), output_file), "rt") as f:
+        lines = f.readlines()
         expected = int(lines[0].strip())
+        output.append(expected)
+    return output
 
-def test_manipulate_array():
-    assert manipulate_array.manipulate_array(item_count, op_count, op_array) == expected
+
+def test_large_case_manipulate_array():
+    case_input = get_input("large_case_input.txt")
+    case_output = get_output("large_case_output.txt")
+    for _ in xrange(len(case_input)):
+        case = case_input[_]
+        item_count, op_count, op_array = case
+        output = case_output[_]
+    assert manipulate_array.manipulate_array(item_count, op_count, op_array) == output

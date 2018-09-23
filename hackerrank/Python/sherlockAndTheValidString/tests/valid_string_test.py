@@ -1,26 +1,22 @@
-import json
 import os
 
 import pytest
 
 from sherlockAndTheValidString import valid_string
 
-test_cases = None
-with open(os.path.join(os.path.dirname(__file__), "test_input.json"), "rt") as f:
-    test_cases = json.load(f)
 
-for testcase in test_cases:
-    input_file_loc = os.path.join(os.path.dirname(__file__), testcase["input"])
-    output_file_loc = os.path.join(os.path.dirname(__file__), testcase["output"])
-    s = None
+def get_input(input_file):
+    with open(os.path.join(os.path.dirname(__file__), input_file), "rt") as f:
+        lines = f.readlines()
+        return lines[0].strip()
 
-    with open(input_file_loc) as input_contents:
-        lines = input_contents.readlines()
-        s = lines[0].strip()
+def get_output(output_file):
+    with open(os.path.join(os.path.dirname(__file__), output_file), "rt") as f:
+        lines = f.readlines()
+        return lines[0].strip()
 
-    with open(output_file_loc) as output_contents:
-        lines = output_contents.readlines()
-        expected = lines[0].strip()
 
-def test_is_valid():
-    assert valid_string.is_valid(s) == expected
+def test_is_valid_short_string():
+    case_input = get_input("short_case_input.txt")
+    case_output = get_output("short_case_output.txt")
+    assert valid_string.is_valid(case_input) == case_output

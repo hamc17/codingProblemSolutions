@@ -1,27 +1,28 @@
-import json
 import os
 
 import pytest
 
 from coinChangeProblem import coin_change
 
-test_cases = None
-with open(os.path.join(os.path.dirname(__file__), "test_input.json"), "rt") as f:
-    test_cases = json.load(f)
 
-for testcase in test_cases:
-    input_file_loc = os.path.join(os.path.dirname(__file__), testcase["input"])
-    output_file_loc = os.path.join(os.path.dirname(__file__), testcase["output"])
-    n = coin_count = coins = None
-
-    with open(input_file_loc) as input_contents:
-        lines = input_contents.readlines()
+def get_input(input_file):
+    with open(os.path.join(os.path.dirname(__file__), input_file), "rt") as f:
+        lines = f.readlines()
         n, coin_count = map(int, lines[0].strip().split(" "))
         coins = map(int, lines[1].strip().split(" "))
+        case = [n, coin_count, coins]
+    return case
 
-    with open(output_file_loc) as output_contents:
-        lines = output_contents.readlines()
-        expected = int(lines[0].strip())
+def get_output(output_file):
+    with open(os.path.join(os.path.dirname(__file__), output_file), "rt") as f:
+        lines = f.readlines()
+        output = int(lines[0].strip())
+    return output
 
-def test_get_ways():
-    assert coin_change.getWays(n, coins) == expected
+
+def test_large_amount_get_ways():
+    case_input = get_input("large_amount_case_input.txt")
+    case_output = get_output("large_amount_case_output.txt")
+    n, coin_count, coins = case_input
+    output = case_output
+    assert coin_change.getWays(n, coins) == output

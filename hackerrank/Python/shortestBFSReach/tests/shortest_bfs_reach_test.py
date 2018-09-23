@@ -1,4 +1,3 @@
-import json
 import os
 
 import pytest
@@ -22,7 +21,7 @@ def get_input(input_file):
             start_val = int(lines[parsed].strip())
             parsed += 1
             cases.append([nodes, edge_count, start_val, edges])
-        return cases
+    return cases
 
 def get_output(output_file):
     output = []
@@ -31,7 +30,7 @@ def get_output(output_file):
         output = []
         for line in lines:
             output.append(map(int, line.strip().split(" ")))
-        return output
+    return output
 
 def test_small_case():
     case_input = get_input("short_case_input.txt")

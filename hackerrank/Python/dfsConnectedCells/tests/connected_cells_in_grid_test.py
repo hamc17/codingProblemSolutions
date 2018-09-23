@@ -5,24 +5,33 @@ import pytest
 
 from dfsConnectedCells import connected_cells_in_grid
 
-test_cases = None
-with open(os.path.join(os.path.dirname(__file__), "test_input.json"), "rt") as f:
-    test_cases = json.load(f)
 
-for testcase in test_cases:
-    input_file_loc = os.path.join(os.path.dirname(__file__), testcase["input"])
-    output_file_loc = os.path.join(os.path.dirname(__file__), testcase["output"])
-    n = m = grid = None
-
-    with open(input_file_loc) as input_contents:
-        lines = input_contents.readlines()
+def get_input(input_file):
+    with open(os.path.join(os.path.dirname(__file__), input_file), "rt") as f:
+        lines = f.readlines()
         n = int(lines[0].strip())
         m = int(lines[1].strip())
         grid = [map(int, lines[2 + i].strip().split(" ")) for i in range(n)]
+        case = [n, m, grid]
+    return case
 
-    with open(output_file_loc) as output_contents:
-        lines = output_contents.readlines()
-        expected = int(lines[0].strip())
+def get_output(output_file):
+    with open(os.path.join(os.path.dirname(__file__), output_file), "rt") as f:
+        lines = f.readlines()
+        output = int(lines[0].strip())
+    return output
 
-def test_connected_cells_in_grid():
-    assert connected_cells_in_grid.maxRegion(grid) == expected
+
+def test_small_grid_connected_cells_in_grid():
+    case_input = get_input("small_grid_case_input.txt")
+    case_output = get_output("small_grid_case_output.txt")
+    n, m, grid = case_input
+    output = case_output
+    assert connected_cells_in_grid.maxRegion(grid) == output
+
+def test_larger_grid_connected_cells_in_grid():
+    case_input = get_input("larger_grid_case_input.txt")
+    case_output = get_output("larger_grid_case_output.txt")
+    n, m, grid = case_input
+    output = case_output
+    assert connected_cells_in_grid.maxRegion(grid) == output
