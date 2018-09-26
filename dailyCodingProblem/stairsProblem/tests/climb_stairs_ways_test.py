@@ -25,16 +25,16 @@ def get_output(output_file):
 def test_small_case():
     case_input = get_input("short_case_input.txt")
     case_output = get_output("short_case_output.txt")
-    stair_count = case_input[0]
+    staircase_size = case_input[0]
     steps = case_input[1]
     output = case_output
-    assert climb_stairs_ways.get_ways(stair_count, steps) == output
+    assert climb_stairs_ways.get_ways(staircase_size, steps) == output
 
 
 def test_larger_case():
     case_input = get_input("larger_case_input.txt")
     case_output = get_output("larger_case_output.txt")
-    stair_count = case_input[0]
+    staircase_size = case_input[0]
     steps = case_input[1]
     output = case_output
-    assert climb_stairs_ways.get_ways(stair_count, steps) == output
+    assert climb_stairs_ways.get_ways(staircase_size, steps) == output
