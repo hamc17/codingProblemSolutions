@@ -1,6 +1,3 @@
-# /usr/bin/python3
-
-
 def get_max_nonadj_subset_val(arr):
     """Gets the maximum value of a non-adjacent sub-array
     within arr. Sub-array can be empty.
@@ -12,8 +9,8 @@ def get_max_nonadj_subset_val(arr):
     """
 
     max_val = 0
-    print(type(arr))
-    print(arr)
+    print type(arr)
+    print arr
     # As the constraint is a non-adjacent sub-array, the max
     # can either be the the current element's value, the current
     # max or the max of the element at i-2.

@@ -1,5 +1,4 @@
 .vscode
-Pipfile*
 *.pytest_cache*
 *.pyc
 pytest.ini
